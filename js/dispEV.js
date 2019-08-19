@@ -63,7 +63,7 @@ var platform = new H.service.Platform({
   };
   
   function addMarker(newpos){
-    var ev_icon = new H.map.Icon('img/EV.png');
+    var ev_icon = new H.map.Icon('https://github.com/kuberaspeaking/Intergeo/blob/master/img/EV.png');
     ev_marker = new H.map.Marker(newpos,{icon:ev_icon});
     map.addObject(ev_marker);
   }
