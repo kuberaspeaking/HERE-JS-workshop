@@ -57,13 +57,13 @@ var behavior = new H.mapevents.Behavior(mapEvents)
 
 Add the following code before </script> tag
 
-```html
+```javascript
 // create a marker object
 posMarker = new H.map.Marker(MyPos)
 // Add the marker to the map 
 map.addObject(posMarker)
 ```
-```html
+```javascript
 function DisplayEV(){
   let params = {
     "app_id": "zAHKPiijsFrECICMz4D2",
@@ -102,7 +102,7 @@ function addMarker(newpos,html){
 
 DisplayEV()
 ```
-```html
+```javascript
 function drawCircle()
 {
 var circle = new H.map.Circle(MyPos,5000)
@@ -111,7 +111,7 @@ map.addObject(circle)
 
 drawCircle()
 ```
-```html
+```javascript
 var myLoc = MyPos.lat + ',' + MyPos.lng
 var routingParams = {
   'mode': 'fastest;car;',
