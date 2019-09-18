@@ -28,7 +28,7 @@ Copy the code below into your editor.
 <div id="map" style="width: 100vw; height: 100vh; background: #39B6B3;" ></div> 
 <script>
 var platform = new H.service.Platform({
-  apikey: "YOUR_APIKEY",
+  apikey: "{YOUR_APIKEY}",
   useHTTPS: true
 })
 
@@ -55,6 +55,9 @@ var behavior = new H.mapevents.Behavior(mapEvents)
 ```
 # Save the file as HERE_JS_Workshop.html
 
+</br> Double-click on saved file to view on browser
+
+# Adding a position marker using map object of Interactive maps API
 Add the following code before </script> tag
 
 ```javascript
@@ -63,11 +66,15 @@ posMarker = new H.map.Marker(MyPos)
 // Add the marker to the map 
 map.addObject(posMarker)
 ```
+</br> Double-click on saved file to view on browser
+
+# Display EV Charging Stations using Places REST API
+Add the following code before </script> tag
 ```javascript
 function DisplayEV(){
   let params = {
-    "app_id": "zAHKPiijsFrECICMz4D2",
-    "app_code": "vandkZuWnOaO3NTdKnlGDg",
+    "app_id": "{YOUR_APP_ID}",
+    "app_code": "{YOUR_APP_CODE}",
     "in":  MyPos.lat + ',' + MyPos.lng +";r=1000000",       // meters
     "cat": "EV-charging-station",
     "size": "500"
@@ -102,6 +109,11 @@ function addMarker(newpos,html){
 
 DisplayEV()
 ```
+</br> Double-click on saved file to view on browser
+
+# Draw a circle of radius 5 Km using add object of Interactive maps API
+Add the following code before </script> tag
+
 ```javascript
 function drawCircle()
 {
@@ -111,6 +123,11 @@ map.addObject(circle)
 
 drawCircle()
 ```
+</br> Double-click on saved file to view on browser
+
+# Add isoline routing using isoline of the Routing API
+Add the following code before </script> tag
+
 ```javascript
 var myLoc = MyPos.lat + ',' + MyPos.lng
 var routingParams = {
@@ -158,5 +175,9 @@ router.calculateIsoline(
   alert(error.message)
   }
 );
-
 ```
+</br> Double-click on saved file to view on browser
+
+Check [final code](/index.html) with modifications
+
+
