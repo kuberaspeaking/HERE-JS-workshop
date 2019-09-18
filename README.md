@@ -5,7 +5,11 @@ Workshop using HERE APIs for Intergeo 2019
 # Generate apikey , app_id and app_code
 ![Folding in action](https://github.com/kuberaspeaking/Intergeo/blob/master/img/register.gif)
 
-Please copy the starting HTML template below and paste into your your code editor.
+# Start coding!
+
+Open your favourite IDE or a simple code editor like notepad or notepad++
+
+Copy the code below into your editor.
 
 ``` html
 <!DOCTYPE html>
@@ -49,4 +53,110 @@ var behavior = new H.mapevents.Behavior(mapEvents)
 </body>
 </html>
 ```
+# Save the file as HERE_JS_Workshop.html
 
+Add the following code before </script> tag
+
+```html
+// create a marker object
+posMarker = new H.map.Marker(MyPos)
+// Add the marker to the map 
+map.addObject(posMarker)
+```
+```html
+function DisplayEV(){
+  let params = {
+    "app_id": "zAHKPiijsFrECICMz4D2",
+    "app_code": "vandkZuWnOaO3NTdKnlGDg",
+    "in":  MyPos.lat + ',' + MyPos.lng +";r=1000000",       // meters
+    "cat": "EV-charging-station",
+    "size": "500"
+  }
+
+  let query = Object.keys(params)
+             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+             .join('&')
+  let url = 'https://places.api.here.com/places/v1/browse?' + query
+
+
+  fetch(url, {
+    "method": "GET"
+  })
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    for (i=0; i < response.results.items.length; i++)
+      {  
+      // resultData[i] = response.results.items[i]
+      newpos= {lat: response.results.items[i].position[0], lng: response.results.items[i].position[1]}
+      addMarker(newpos)
+      // printInfo()
+      } 
+  })
+}
+function addMarker(newpos,html){
+  // var ev_icon = new H.map.Icon('EV.png')
+  ev_marker = new H.map.Marker(newpos)
+  map.addObject(ev_marker)
+}
+
+DisplayEV()
+```
+```html
+function drawCircle()
+{
+var circle = new H.map.Circle(MyPos,5000)
+map.addObject(circle)
+}
+
+drawCircle()
+```
+```html
+var myLoc = MyPos.lat + ',' + MyPos.lng
+var routingParams = {
+  'mode': 'fastest;car;',
+  'start': myLoc,
+  'range': '600', // 10 (10x60secs) minutes of driving 
+  'rangetype': 'time'
+}
+
+// Define a callback function to process the isoline response.
+var onResult = function(result) {
+  var center = new H.geo.Point(
+    result.response.center.latitude,
+    result.response.center.longitude),
+  isolineCoords = result.response.isoline[0].component[0].shape,
+  linestring = new H.geo.LineString(),
+  isolinePolygon,
+  isolineCenter
+
+  // Add the returned isoline coordinates to a linestring:
+  isolineCoords.forEach(function(coords) {
+  linestring.pushLatLngAlt.apply(linestring, coords.split(','))
+  })
+
+  // Create a polygon and a marker representing the isoline:
+  isolinePolygon = new H.map.Polygon(linestring)
+//   isolineCenter = new H.map.Marker(center)
+
+  // Add the polygon and marker to the map:
+  map.addObject(isolinePolygon)
+
+  // Center and zoom the map so that the whole isoline polygon is
+  // in the viewport:
+  map.getViewModel().setLookAtData({bounds: isolinePolygon.getBoundingBox()})
+}
+
+// Get an instance of the routing service:
+var router = platform.getRoutingService()
+
+// Call the Routing API to calculate an isoline:
+router.calculateIsoline(
+  routingParams,
+  onResult,
+  function(error) {
+  alert(error.message)
+  }
+);
+
+```
