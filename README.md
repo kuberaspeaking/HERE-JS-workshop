@@ -183,7 +183,10 @@ Check [final code](/index.html) with modifications
 # Contact Information
 [![Foo](https://www.gettingstamped.com/wp-content/uploads/2015/02/Twitter-Logo.png)](https://twitter.com/heredev) 
 [![Foo](https://www.re-plate.org/assets/splash/logos/slack-005817a74674d175b6768fafad01c3953dd27837a925a995c6aba1c0a38e2653.png)](https://heredev.slack.com/) 
+[![Foo](https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a)](https://stackoverflow.com/questions/tagged/here-api)
+[![Foo](http://www.markwk.com/images/github_logo.png](https://github.com/heremaps)
 [![Foo](https://cdn3.iconfinder.com/data/icons/ultimate-social/150/18_email-128.png)](mapcreator@here.com) 
+
 # Watch live webinars and videos
 
 [![Foo](http://howtofilmschool.com/wp-content/uploads/2015/08/twitch-logo-150x150.png)](https://www.twitch.tv/heredev) 
