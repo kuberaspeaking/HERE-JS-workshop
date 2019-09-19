@@ -28,8 +28,7 @@ Copy the code below into your editor.
 <div id="map" style="width: 100vw; height: 100vh; background: #39B6B3;" ></div> 
 <script>
 var platform = new H.service.Platform({
-  apikey: "{YOUR_APIKEY}",
-  useHTTPS: true
+  apikey: "{YOUR_APIKEY}"
 })
 
 // Obtain the default map types from the platform object:
