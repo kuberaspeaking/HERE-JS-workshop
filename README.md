@@ -181,10 +181,19 @@ router.calculateIsoline(
 Check [final code](/index.html) with modifications
 
 # Contact Information
-[![Foo](https://sdweg.files.wordpress.com/2016/09/l62697-new-twitter-logo-49466.png)](https://twitter.com/ShrutiUKuber) @ShrutiUKuber
-[![Foo](https://sdweg.files.wordpress.com/2016/09/l62697-new-twitter-logo-49466.png)](https://twitter.com/heredev) @heredev
-[![Foo](https://marketing-site-uploads-production.s3.amazonaws.com/c0/c2db10085711e49a4ec737d6903303/slack_logo.png)](heredev.slack.com) heredev
-[![Foo](https://www.here.com/sites/all/themes/herecorporate/here_logo_1920_1008.png)](mapcreator@here.com) mapcreator [at] here [dot] com
+[![Foo](https://www.gettingstamped.com/wp-content/uploads/2015/02/Twitter-Logo.png)](https://twitter.com/ShrutiUKuber) @ShrutiUKuber
+[![Foo](https://www.gettingstamped.com/wp-content/uploads/2015/02/Twitter-Logo.png)](https://twitter.com/heredev) @heredev
+[![Foo](https://www.re-plate.org/assets/splash/logos/slack-005817a74674d175b6768fafad01c3953dd27837a925a995c6aba1c0a38e2653.png)](https://heredev.slack.com/) heredev
+[![Foo](https://cdn3.iconfinder.com/data/icons/ultimate-social/150/18_email-128.png)](mapcreator@here.com) mapcreator [at] here [dot] com
+
+# Watch live webinars and videos
+
+[![Foo](http://howtofilmschool.com/wp-content/uploads/2015/08/twitch-logo-150x150.png)](https://www.twitch.tv/heredev) heredev
+[![Foo](http://logok.org/wp-content/uploads/2014/08/Youtube-logo-2017-150x150.png)](https://www.youtube.com/heremaps) heremaps
+
+# Developer Tutorials and Blogs
+[Developer Blog](https://developer.here.com/blog) [Developer Tutorials](https://developer.here.com/tutorials)
+
 
 
 
