@@ -72,10 +72,12 @@ function DisplayEV(){
   .then(response => response.json())
   .then(response => {
     console.log(response)
+    // create a marker object
+    var homeicon = new H.map.Icon('img/EV.png'),
     for (i=0; i < response.results.items.length; i++)
       {  
       // resultData[i] = response.results.items[i]
-      newpos= {lat: response.results.items[i].position[0], lng: response.results.items[i].position[1]}
+      newpos= ({lat: response.results.items[i].position[0], lng: response.results.items[i].position[1]},{ icon: homeicon });
       addMarker(newpos)
       // printInfo()
       } 
