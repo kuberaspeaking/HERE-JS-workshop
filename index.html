@@ -73,7 +73,7 @@ function DisplayEV(){
   .then(response => {
     console.log(response)
     // create a marker object
-    var homeicon = new H.map.Icon('img/EV.png'),
+    var homeicon = new H.map.Icon('img/EV.png');
     for (i=0; i < response.results.items.length; i++)
       {  
       // resultData[i] = response.results.items[i]
