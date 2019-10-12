@@ -35,16 +35,16 @@ var mapEvents = new H.mapevents.MapEvents(map)
 
 var behavior = new H.mapevents.Behavior(mapEvents)
 
-// Define a variable holding SVG mark-up that defines an icon image:
-var svgMarkup = '<svg width="50" height="50" ' +
-  'xmlns="http://www.w3.org/2000/svg">' +
-  '<rect stroke="white" fill="#1b468d" x="1" y="1" width="50" ' +
-  'height="50" /><text x="25" y="40" font-size="30pt" ' +
-  'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
-  'fill="white">H</text></svg>';
+// // Define a variable holding SVG mark-up that defines an icon image:
+// var svgMarkup = '<svg width="50" height="50" ' +
+//   'xmlns="http://www.w3.org/2000/svg">' +
+//   '<rect stroke="white" fill="#1b468d" x="1" y="1" width="50" ' +
+//   'height="50" /><text x="25" y="40" font-size="30pt" ' +
+//   'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+//   'fill="white">H</text></svg>';
 
 // create a marker object
-var icon = new H.map.Icon(svgMarkup),
+var icon = new H.map.Icon('img/home_logo.png')
 posMarker = new H.map.Marker(MyPos,{icon: icon})
 
 // Add the marker to the map and center the map at the location of the marker:
@@ -83,9 +83,8 @@ function DisplayEV(){
   })
 }
 function addMarker(newpos,html){
-  var homeicon = new H.map.Icon('img/EV.png');
-  // var ev_icon = new H.map.Icon('EV.png')
-  ev_marker = new H.map.Marker(newpos,{ icon: homeicon });
+  var ev_icon = new H.map.Icon('img/EV.png');
+  ev_marker = new H.map.Marker(newpos,{ icon: ev_icon });
   map.addObject(ev_marker)
 }
 
