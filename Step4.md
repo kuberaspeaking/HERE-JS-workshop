@@ -51,3 +51,6 @@ router.calculateIsoline(
 );
 ```
 </br> Double-click on saved file to view on browser
+
+[![Foo](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/img/s5.png)](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step5.md) 
+
