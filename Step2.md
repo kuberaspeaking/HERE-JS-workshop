@@ -43,3 +43,6 @@ function addMarker(newpos,html){
 DisplayEV()
 ```
 </br> Double-click on saved file to view on browser
+
+[![Foo](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/img/s3.png)](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step3.md) 
+
