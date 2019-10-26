@@ -15,7 +15,7 @@ In this workshop we will learn to use the JS and REST APIs from the HERE Locatio
 
 [Register here](http://developer.here.com/events/js-workshop-shruti) for a free developer account</br>
 # Generate apikey , app_id and app_code
-![Folding in action](https://github.com/kuberaspeaking/Intergeo/blob/master/img/register.gif)
+![Folding in action](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/img/register.gif)
 
 # Let's begin!
 
