@@ -19,6 +19,8 @@ In this workshop we will learn to use the JS and REST APIs from the HERE Locatio
 
 # Let's begin!
 
+[![Foo](http://howtofilmschool.com/wp-content/uploads/2015/08/s1.png)](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step1.md) 
+
 
 
 
