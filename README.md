@@ -8,7 +8,7 @@ In this workshop we will learn to use the JS and REST APIs from the HERE Locatio
 ### [Step 2 : We search for all EV charging stations around us and place markers on them](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step2.md)
 ### [Step 3 : We draw a cirle around our position](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step3.md)
 ### [Step 4 : We use isoline routing to find the EV charging stations actually closest to us.](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step4.md)
-### [Beyond : Final code with visual customnizations.](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step5.md)
+### [Beyond : Final code with visual customizations.](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step5.md)
 
 
 # To access any of the APIs, first get your credentials by signing up for a freemium account
