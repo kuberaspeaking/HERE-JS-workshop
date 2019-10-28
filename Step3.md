@@ -16,4 +16,4 @@ drawCircle()
 </br> Double-click on saved file to view on browser
 
 
-[![Foo](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/img/s4.png)](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step4.md) 
+[![Foo](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/s4.png)](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/Step4.md) 
