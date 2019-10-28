@@ -1,5 +1,5 @@
 
-#### [Final Result](https://kuberaspeaking.github.io/Shruti-JS-workshop/)
+#### [Final Result](https://kuberaspeaking.github.io/HERE-JS-workshop/)
 Check [final code](/index.html) with modifications
 
 # Contact Information
