@@ -59,6 +59,6 @@ map.addObject(posMarker)
 ```
 </br> Double-click on saved file to view on browser
 
-[![Foo](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/img/s2.png)](https://github.com/kuberaspeaking/Shruti-JS-workshop/blob/master/Step2.md) 
+[![Foo](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/s2.png)](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/Step2.md) 
 
 
