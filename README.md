@@ -1,4 +1,4 @@
-![HERE Logo](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/HERE_Logo_2016_POS_sRGB200X183.jpg) 
+![HERE Logo](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/hereWsLogo.jpg) 
 # HERE JavaScript Workshop 
 In this workshop we will learn to use the JS and REST APIs from the HERE Location Suite.
 
