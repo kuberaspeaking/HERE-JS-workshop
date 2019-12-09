@@ -10,7 +10,7 @@ In this workshop we will learn to use the JS and REST APIs from the HERE Locatio
 
 # To access any of the APIs, first get your credentials by signing up for a freemium account
 
-<a href="https://developer.here.com/events/community-germany" target="_blank">example</a> for a free developer account</br>
+[Register](https://developer.here.com/events/community-germany){:target="_blank"} for a free developer account</br>
 
 # Generate apikey , app_id and app_code
 ![Folding in action](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/register.gif)
