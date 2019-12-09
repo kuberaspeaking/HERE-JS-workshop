@@ -1,5 +1,5 @@
 ![HERE Logo](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/hereWsLogo.png) 
-# HERE JavaScript Workshop 
+
 In this workshop we will learn to use the JS and REST APIs from the HERE Location Suite.
 
 #### Step 1 : We render a map and place a marker on our current position
