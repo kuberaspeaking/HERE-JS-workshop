@@ -5,7 +5,7 @@
 Add the following code before </script> tag
 ```javascript
 
-            function DisplayEV(){
+            function displayEV(){
                 let params = {
                     "apiKey": "YOUR_REST_APIKEY",
                     "in":  MyPos.lat + ',' + MyPos.lng +";r=10000",       // meters
@@ -34,12 +34,12 @@ Add the following code before </script> tag
                 })
             }
 
-            function addMarker(newpos,html){
+            function addMarker(newpos){
                 ev_marker = new H.map.Marker(newpos);
                 map.addObject(ev_marker);
             }
 
-            DisplayEV()
+            displayEV()
 ```
 </br> Double-click on saved file to view on browser
 
