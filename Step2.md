@@ -7,7 +7,7 @@ Add the following code before </script> tag
 
             function DisplayEV(){
                 let params = {
-                    "apiKey": "YOUR_REST_API_KEY",
+                    "apiKey": "YOUR_REST_APIKEY",
                     "in":  MyPos.lat + ',' + MyPos.lng +";r=10000",       // meters
                     "cat": "EV-charging-station",
                     "size": "500"
