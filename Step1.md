@@ -55,10 +55,13 @@ Copy the code below into your editor.
 Add the following code before </script> tag
 
 ```javascript
-// create a marker object
-posMarker = new H.map.Marker(MyPos)
-// Add the marker to the map 
-map.addObject(posMarker)
+            // create a marker object 
+
+            posMarker = new H.map.Marker(MyPos);
+            
+            // Add the marker to the map 
+
+            map.addObject(posMarker);
 ```
 </br> Double-click on saved file to view on browser
 
