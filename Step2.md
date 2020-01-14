@@ -4,11 +4,10 @@
 # Display EV Charging Stations using Places REST API
 Add the following code before </script> tag
 ```javascript
-
             function displayEV(){
                 let params = {
                     "apiKey": "YOUR_REST_APIKEY",
-                    "in":  MyPos.lat + ',' + MyPos.lng +";r=10000",       // meters
+                    "in":  myPos.lat + ',' + myPos.lng +";r=10000",       // meters
                     "cat": "EV-charging-station",
                     "size": "500"
                 };
@@ -28,18 +27,18 @@ Add the following code before </script> tag
                     console.log(response);
                     // create a marker object
                     for (i=0; i < response.results.items.length; i++){  
-                        newpos= ({lat: response.results.items[i].position[0], lng: response.results.items[i].position[1]});
-                        addMarker(newpos);
+                        newPos= ({lat: response.results.items[i].position[0], lng: response.results.items[i].position[1]});
+                        addMarker(newPos);
                     } 
                 })
             }
 
             function addMarker(newpos){
-                ev_marker = new H.map.Marker(newpos);
-                map.addObject(ev_marker);
+                evMarker = new H.map.Marker(newPos);
+                map.addObject(evMarker)
             }
 
-            displayEV()
+            displayEV();
 ```
 </br> Double-click on saved file to view on browser
 
