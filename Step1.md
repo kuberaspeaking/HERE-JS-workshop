@@ -26,7 +26,7 @@ Copy the code below into your editor.
             // Obtain the default map types from the platform object:
 
             var defaultLayers = platform.createDefaultLayers();
-            var MyPos = {lat: 48.69429, lng: 9.1866};
+            var myPos = {lat: 48.69429, lng: 9.1866};
 
             // Instantiate (and display) a map object:
 
@@ -35,7 +35,7 @@ Copy the code below into your editor.
                 defaultLayers.vector.normal.map,
                 {
                     zoom: 11,
-                    center: MyPos
+                    center: myPos
                 });
 
             var ui = H.ui.UI.createDefault(map, defaultLayers);
@@ -57,7 +57,7 @@ Add the following code before </script> tag
 ```javascript
             // create a marker object 
 
-            posMarker = new H.map.Marker(MyPos);
+            posMarker = new H.map.Marker(myPos);
             
             // Add the marker to the map 
 
