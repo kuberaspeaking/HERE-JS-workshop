@@ -8,13 +8,13 @@ Copy the code below into your editor.
 <html lang="en">
     <head>
         <title>Smart Cities</title>
-        <!--<!-- SCRIPTS -->
+        <!-- SCRIPTS -->
         <meta name="viewport" charset="UTF-8" content="initial-scale=1.0, width=device-width" />
-        <cript type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"/> -->
+        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"/> 
     </head>
     <body>
         <div id="map" style="width: 100vw; height: 100vh; background: #39B6B3;" ></div> 
