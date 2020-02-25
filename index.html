@@ -38,10 +38,12 @@
             var icon = new H.map.Icon('img/home_logo.png');
             if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
+                // console.log(position);
                 // set maker position using the latitude and longitude in the received position
                 markerPosition = {lat:position.coords.latitude,lng:position.coords.longitude};
                 //  create makrker element using the received position
                 posMarker = new H.map.Marker(markerPosition,{icon: icon});
+                posMarker.setData("I'm HERE");
                 //  Add marker to map.
                 map.addObject(posMarker);
 
