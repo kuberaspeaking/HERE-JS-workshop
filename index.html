@@ -19,14 +19,14 @@
 
             // Obtain the default map types from the platform object:
             var defaultLayers = platform.createDefaultLayers();
-            var myPos = {lat: 48.69429, lng: 9.1866};
+            // var myPos = {lat: 48.69429, lng: 9.1866};
             // Instantiate (and display) a map object:
             var map = new H.Map(
                 document.getElementById('map'),
                 defaultLayers.vector.normal.map,
                 {
                     zoom: 11,
-                    center: myPos
+                    center: {lat: 48.69429, lng: 9.1866} // center of map
             });
 
             var ui = H.ui.UI.createDefault(map, defaultLayers);
@@ -35,19 +35,27 @@
 
             var behavior = new H.mapevents.Behavior(mapEvents);
 
-            // create a marker object
-
             var icon = new H.map.Icon('img/home_logo.png');
-            posMarker = new H.map.Marker(myPos,{icon: icon});
+            if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                // set maker position using the latitude and longitude in the received position
+                markerPosition = {lat:position.coords.latitude,lng:position.coords.longitude};
+                //  create makrker element using the received position
+                posMarker = new H.map.Marker(markerPosition,{icon: icon});
+                //  Add marker to map.
+                map.addObject(posMarker);
+            });
+        } 
+        else {
+            console.error("Geolocation is not supported by this browser!");
+        }
 
-            // Add the marker to the map and center the map at the location of the marker:
-
-            map.addObject(posMarker)
+         
 
             function displayEV(){
                 let params = {
                     "apiKey": "KUFJZlg1QpKnIqlMlodmDXeu7nNktr2-caRXFHpxgSI",
-                    "in":  myPos.lat + ',' + myPos.lng +";r=1000000",       // meters
+                    "in":  markerPosition.lat + ',' + markerPosition.lng +";r=1000000",       // meters
                     "cat": "EV-charging-station",
                     "size": "500"
                 }
@@ -103,14 +111,14 @@
             };
 
             function drawCircle(){
-                var circle = new H.map.Circle(myPos,5000,{ style: customStyle });
+                var circle = new H.map.Circle(markerPosition,5000,{ style: customStyle });
                 map.addObject(circle);  
             };
 
             drawCircle();
 
 
-            var myLoc = myPos.lat + ',' + myPos.lng;
+            var myLoc = markerPosition.lat + ',' + markerPosition.lng;
             var routingParams = {
                 'mode': 'fastest;car;',
                 'start': myLoc,
