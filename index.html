@@ -47,6 +47,12 @@
                 //  Add marker to map.
                 map.addObject(posMarker);
                 // map.setCenter(posMarker);
+                map.getViewModel().setLookAtData({
+                    position: markerPosition, 
+                    zoom: 19, 
+                    heading: 0, 
+                    tilt: 90});
+                }
 
                 function displayEV(){
                     let params = {
