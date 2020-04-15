@@ -57,7 +57,7 @@ Add the following code before </script> tag
 ```javascript
             // create a marker object 
 
-            posMarker = new H.map.Marker(myPos);
+            var posMarker = new H.map.Marker(myPos);
             
             // Add the marker to the map 
 
