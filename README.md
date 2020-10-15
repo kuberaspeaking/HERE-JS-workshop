@@ -8,6 +8,6 @@ get- Get r position and mark it on a map.
 2) [Christmas Markets near me -Beuth University](HERE-Beuth)
 3) [EV-Charging-Isoline2](HERE-EV-Isoline)
 4) [Food Delivery Workshop](FoodDeliveryWithHERE)
-5) [TU Munich Workshop](tuMunichWorkshop)
+5) [TU Munich Workshop](https://kuberaspeaking.github.io/HERE-JS-workshop/tuMunichWorkshop)
 6) [TU Mainz Workshop](TU_Mainz)
-7) [HERE DAC Workshop](HERE_DAC_Workshop)
+7) [HERE DAC Workshop](https://kuberaspeaking.github.io/HERE-JS-workshop/HERE_DAC_Workshop)
