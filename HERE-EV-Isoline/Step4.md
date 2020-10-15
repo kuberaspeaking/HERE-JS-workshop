@@ -53,5 +53,5 @@ Add the following code before </script> tag
 ```
 </br>Save file to view the changes
 
-[![Foo](/img/s5.png)](/Step5.md)
+[![Foo](img/s5.png)](Step5.md)
 

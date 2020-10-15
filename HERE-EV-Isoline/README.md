@@ -1,4 +1,4 @@
-![HERE Logo](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/hereWsLogo.png) 
+![HERE Logo](img/hereWsLogo.png) 
 
 In this workshop we will learn to use the Maps, Geocoding and Search, Routing JS APIs from the HERE Location Suite.
 
@@ -13,11 +13,11 @@ In this workshop we will learn to use the Maps, Geocoding and Search, Routing JS
 [Register](https://developer.here.com/events/community-germany) for a free developer account</br>
 
 # Generate apikeys
-![Folding in action](https://github.com/kuberaspeaking/HERE-JS-workshop/blob/master/img/RegistrationGif.gif)
+![Folding in action](img/RegistrationGif.gif)
 
 # Let's begin!
 
-[![Foo](/img/s1.png)](/Step1.md) 
+[![Foo](img/s1.png)](Step1.md) 
 
 
 

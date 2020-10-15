@@ -76,6 +76,6 @@ This makes it super easy to see your application on your browser.
 ```
 ### Click on the 'Go Live' button at the bottom right of your VSCODE application window or or press 'cmd + L cmd + O '/ 'ctrl + L ctrl + O ' and see your application open in your default browser
 
-[![Foo](/img/s2.png)](/Step2.md)
+[![Foo](img/s2.png)](Step2.md)
 
 

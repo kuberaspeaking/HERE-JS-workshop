@@ -32,5 +32,5 @@ Add the following code before </script> tag
 ```
 </br> Double-click on saved file to view on browser
 
-[![Foo](/img/s3.png)](/Step3.md)
+[![Foo](img/s3.png)](Step3.md)
 
