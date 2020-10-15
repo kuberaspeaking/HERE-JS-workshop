@@ -21,7 +21,7 @@ In this workshop we will learn to use the JavaScript APIs from the HERE Location
 
 # Let's begin!
 
-[![Foo](img/s1.png)](/Step1.md) 
+[![Foo](img/s1.png)](Step1.md) 
 
 
 

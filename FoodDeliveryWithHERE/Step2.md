@@ -43,5 +43,5 @@ Add the following code before </script> tag
 
 ```
 
-[![Foo](img/s3.png)](/Step3.md) 
+[![Foo](img/s3.png)](Step3.md) 
 

@@ -80,4 +80,4 @@ Add the following code before </script> tag
         };
             
 ```
-[![Foo](img/s4.png)](/Step4.md) 
+[![Foo](img/s4.png)](Step4.md) 
