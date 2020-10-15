@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tannenbaum</title>
+    <!-- SCRIPTS -->
+    <meta name="viewport" charset="UTF-8" content="initial-scale=1.0, width=device-width" />
+    <!-- <script src="https://github.com/kuberaspeaking/HERE-Beuth/blob/master/img/univ.png"></script> -->
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"/>
+  </head>
+  <body>
+    <div id="map" style="width: 100vw; height: 100vh; background: #39B6B3;" ></div> 
+    <script>
+      var platform = new H.service.Platform({
+        apikey: "aMEDq4JjjnxBcqf6S-g9OkREM8yElzKT2XU_gZhNic4"
+      });
+
+       // Obtain the default map types from the platform
+
+      var maptypes = platform.createDefaultLayers();
+      var myPos = {lat: 49.98771, lng: 8.22991};
+
+      // Instantiate and display a map
+      var map = new H.Map(document.getElementById('map'), maptypes.vector.normal.map, {
+        center: myPos,
+        zoom: 8
+      });
+
+      var ui = H.ui.UI.createDefault(map, maptypes);
+
+      var mapEvents = new H.mapevents.MapEvents(map);
+
+      var behavior = new H.mapevents.Behavior(mapEvents);
+
+      // create a marker object
+      
+      var uniIcon = new H.map.Icon('img/univ.png');
+      posMarker = new H.map.Marker(myPos,{icon:uniIcon});
+      // Add the marker to the map 
+      map.addObject(posMarker);
+
+      // Get an instance of the geocoding service:
+      var geocoder = platform.getGeocodingService();
+
+      let storeList = [
+        "BAUHAUS Mainz-Mombach, Rheinallee 128, 55120 Mainz",
+        "Hornbach Mainz Bretzenheim, Am Schleifweg 5, 55128 Mainz",
+        "Toom Nieder-Olm, Am Hahnenbusch 33, 55268 Nieder-Olm",
+        "REWE Supermärkte Mainz, Neubrunnenplatz, 55116 Mainz",
+        "REWE Supermärkte Mainz, Adam-Karrillon-Str. 23A, 55118 Mainz",
+        "Rheinallee 64, 55120 Mainz",
+        "Neubrunnenplatz, 55116 Mainz",
+        "Haifa Allee 42, 55116 Mainz",
+        "Alfred-Delp-Str. 64, 55122 Gonsenheim",
+        "Töngesstraße 22, 55129 Ebersheim",
+        "Kurmainzstr. 14, 55126 Finthen",
+        "Im Wald 16, 55257 Budenheim",
+        "Mainzerstrasse, 41, 65462 Ginsheim-Gustavsburg",
+        "Boelckestraße 135, 55252 Wiesbaden"
+      ];
+
+      // Define a callback function to process the geocoding response:
+      var onResult = function(result) {
+        var locations = result.Response.View[0].Result,
+            position,
+            marker;
+        var treeIcon = new H.map.Icon('img/xmasTree.png');
+        // console.log(result);
+        // Add a marker for each location found
+          position = {
+            lat: locations[0].Location.DisplayPosition.Latitude,
+            lng: locations[0].Location.DisplayPosition.Longitude
+          };
+          marker = new H.map.Marker(position,{icon:treeIcon});
+          map.addObject(marker);
+        
+      };
+
+      function buyXmasTrees(){
+        for (var list = 0; list < storeList.length; list++){
+          geocoder.geocode({searchText: storeList[list]}, onResult, function(e) {alert(e);})
+
+        };
+
+
+      };
+
+      buyXmasTrees(); 
+
+      var circleStyle = {
+      strokeColor: 'dark green',
+      fillColor: 'rgba(0, 255, 100, 0.2)',
+      lineWidth: 1,
+        };
+
+      function drawCircle(){
+        var circle = new H.map.Circle(myPos,5000,{ style: circleStyle });
+        map.addObject(circle);
+      }
+
+      drawCircle()
+
+      var myLoc = myPos.lat + ',' + myPos.lng;
+      var routingParams = {
+        'mode': 'shortest;pedestrian;',
+        'start': myLoc,
+        'range': '5000', // 2 km
+        'rangetype': 'distance'
+      };
+
+      var isolineStyle = {
+      strokeColor: 'maroon',
+      fillColor: 'rgba(255, 0, 0, 0.2)',
+      lineWidth: 1,
+        };
+
+      // Define a callback function to process the isoline response.
+      var onResultIsoline = function(result) {
+        var center = new H.geo.Point(
+          result.response.center.latitude,
+          result.response.center.longitude),
+        isolineCoords = result.response.isoline[0].component[0].shape,
+        linestring = new H.geo.LineString(),
+        isolinePolygon,
+        isolineCenter;
+
+        // Add the returned isoline coordinates to a linestring:
+        isolineCoords.forEach(function(coords) {
+        linestring.pushLatLngAlt.apply(linestring, coords.split(','))
+        });
+
+        // Create a polygon and a marker representing the isoline:
+        isolinePolygon = new H.map.Polygon(linestring,{style:isolineStyle});
+      //   isolineCenter = new H.map.Marker(center)
+
+        // Add the polygon and marker to the map:
+        map.addObject(isolinePolygon);
+
+        // Center and zoom the map so that the whole isoline polygon is
+        // in the viewport:
+        map.getViewModel().setLookAtData({bounds: isolinePolygon.getBoundingBox()});
+      };
+
+      // Get an instance of the routing service:
+      var router = platform.getRoutingService();
+
+      // Call the Routing API to calculate an isoline:
+      router.calculateIsoline(
+        routingParams,
+        onResultIsoline,
+        function(error) {
+        alert(error.message)
+        }
+      );
+
+
+    </script>
+  </body>
+</html>
