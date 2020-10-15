@@ -1,4 +1,4 @@
-![HERE Logo](/img/titleImage.png) 
+![HERE Logo](img/titleImage.png) 
 
 In this workshop we will learn to use the JavaScript APIs from the HERE Location Suite.
 
@@ -13,15 +13,15 @@ In this workshop we will learn to use the JavaScript APIs from the HERE Location
 [Register](https://developer.here.com/events/community-france) for a free developer account</br>
 
 # Generate apikeys
-![Folding in action](/img/Day0Gif.gif)
+![Folding in action](img/Day0Gif.gif)
 
 # Join our Slack
-[![Foo](/img/slack.png)](http://t.her.is/slack) Join the channel *weu-workshop*
+[![Foo](img/slack.png)](http://t.her.is/slack) Join the channel *weu-workshop*
 
 
 # Let's begin!
 
-[![Foo](/img/s1.png)](/Step1.md) 
+[![Foo](img/s1.png)](/Step1.md) 
 
 
 

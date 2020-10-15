@@ -38,5 +38,5 @@
         }
 ```
 
-[![Foo](/img/s5.png)](/Step5.md) 
+[![Foo](img/s5.png)](Step5.md) 
 
