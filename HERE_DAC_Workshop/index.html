@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HERE Logistics Workshop</title>
+        <!-- SCRIPTS -->
+        <meta name="viewport" charset="UTF-8" content="initial-scale=1.0, width=device-width" />
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"/>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Food Delivery with HERE</h1>
+        <div id="mapContainer" style="width: 80vw; height: 50vh; background: #39B6B3; display: block; margin: 0 auto; border: solid 2px black; margin-top: 100px;" > </div>
+        <div style="width: 100vw; height: 40px; margin-top: 30px;">
+            <input type="button" onclick="showDeliveryRest()" value = "Show Restaurants" style="width: 200px; height: 30px; border: 2px solid black; display: block; margin: 0 auto; margin-top: 20px;">
+        </div>
+        <div id="panel" style="width: 30vw; background: #39B6B3; color: white; margin-top: 20px;display: block; margin: 0 auto;"></div>
+        
+    </body>
+    <script>
+        var platform = new H.service.Platform({
+            apikey: "aMEDq4JjjnxBcqf6S-g9OkREM8yElzKT2XU_gZhNic4"
+           // JS APIKEY
+        });
+
+        // Obtain the default map types from the platform object:
+
+        var defaultLayers = platform.createDefaultLayers();
+        var myPosition = {lat: 52.53007, lng: 13.38526};
+
+        // Instantiate (and display) a map object:
+
+        var map = new H.Map(
+            document.getElementById('mapContainer'),
+            defaultLayers.vector.normal.map,
+            {
+                zoom: 11,
+                center: myPosition
+            });
+
+        var ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
+        //  To change the language, change the 'en-US' to the language code you want
+        //  other language codes:
+        // en-US – English (United States)
+        // de-DE – German
+        // es-ES – Spanish
+        // fi-FI – Finnish
+        // fr-FR – French
+        // it-IT – Italian
+        // nl-NL – Dutch
+        // pl-PL – Polish
+        // pt-BR – Portuguese (Brazil)
+        // pt-PT – Portuguese (Portugal)
+        // ru-RU – Russian
+        // tr-TR – Turkish
+        // zh-CN – Chinese (China)
+
+
+
+        var mapEvents = new H.mapevents.MapEvents(map);
+
+        var behavior = new H.mapevents.Behavior(mapEvents);
+
+        // Get an instance of the routing service:
+        var router = platform.getRoutingService();
+
+        // create a marker object 
+        var homeIcon = new H.map.Icon('img/home.png');
+       
+        var takeOutIcon = new H.map.Icon('img/takeout.png');
+    
+
+        var posMarker = new H.map.Marker(myPosition,{icon:homeIcon});
+            
+        // Add the marker to the map 
+
+        map.addObject(posMarker);
+
+
+        // Get an instance of the geocoding service:
+        var service = platform.getSearchService();
+
+        function showDeliveryRest(){
+
+            let param = {
+                at : myPosition.lat+','+myPosition.lng,
+                q: "restaurant",
+                categories: "100-1000-0003", // category Take Out and Delivery Only ,
+                 // for more, got to https://developer.here.com/documentation/geocoding-search-api/dev_guide/topics-places/places-category-system-full.html
+                limit:100
+            }; 
+
+            service.browse(param,displayRestaurants,alert);
+        }
+
+
+        function displayRestaurants(response){
+            var restGroup = new H.map.Group();
+            for(let i = 0; i<response.items.length; i++){
+                let restPosition = response.items[i].position; 
+                let data = response.items[i].title;
+                let restMarker = new H.map.Marker(restPosition,{icon: takeOutIcon} );
+                restMarker.setData(data);
+                restGroup.addObject(restMarker);
+            }
+            map.addObject(restGroup);
+            //  get geo bounding box for the group and set it to the map
+            map.getViewModel().setLookAtData({
+                bounds: restGroup.getBoundingBox()
+            });
+        }
+
+
+        map.addEventListener('tap', function (evt) {
+
+            if (evt.target instanceof H.map.Marker) {
+
+                var bubble =  new H.ui.InfoBubble(evt.target.getGeometry(), {
+                // read custom data
+                content: evt.target.getData()
+                });
+                // show info bubble
+                ui.addBubble(bubble);
+                let restPos= evt.target.getGeometry();
+                showRoute(restPos);
+            }
+        }, 
+            false
+        );
+
+        function showRoute(restPos){
+
+            // console.log(restPos);
+
+            let routingParameters = {
+                // The routing mode:
+                mode: 'fastest;car;traffic:enabled',
+                // The start point of the route:
+                waypoint0: restPos.lat+','+restPos.lng ,
+                // The end point of the route:
+                waypoint1: myPosition.lat+','+myPosition.lng,
+                // To retrieve the shape of the route we choose the route
+                // representation mode 'display'
+                representation: 'display',
+
+                routeattributes : 'summary,shape',
+
+                language: "en-US"
+
+                };
+
+            router.calculateRoute(routingParameters, onResult,
+                function(error) {
+                    alert(error.message);
+            });    
+        }
+
+        // Define a callback function to process the routing response:
+        var onResult = function(result) {
+            var route,
+                routeShape,
+                startPoint,
+                endPoint,
+                linestring;
+
+            let powerpuffIcon = new H.map.Icon('img/powerPuff.png');
+            if(result.response.route) {
+                // Pick the first route from the response:
+                let route = result.response.route[0];
+                // Pick the route's shape:
+                routeShape = route.shape;
+
+                // Create a linestring to use as a point source for the route line
+                linestring = new H.geo.LineString();
+
+                // Push all the points in the shape into the linestring:
+                routeShape.forEach(function(point) {
+                    var parts = point.split(',');
+                    linestring.pushLatLngAlt(parts[0], parts[1]);
+                });
+
+                startPoint = route.waypoint[0].mappedPosition;
+
+                // Create a marker for the start point:
+                var startMarker = new H.map.Marker({
+                    lat: startPoint.latitude,
+                    lng: startPoint.longitude
+                },{
+                    icon : powerpuffIcon
+                });
+
+
+                // Create a polyline to display the route:
+                var routeLine = new H.map.Polyline(linestring, {
+                    style: { strokeColor: 'RGB(116, 66, 200)', lineWidth: 7 }
+                });
+                // Add the route polyline and the two markers to the map:
+                map.addObjects([routeLine,startMarker]);
+
+                console.log(route)
+
+                let maneuver = route.leg[0].maneuver;
+                let summary = route.summary;
+                displayInstructions(maneuver,summary);
+
+                // Set the map's viewport to make the whole route visible:
+                map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
+            }
+        };
+
+
+        Number.prototype.toMMSS = function () {
+            return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
+        }
+
+        function displayInstructions(maneuver,summary){
+
+            var totalTravelTime = 0;
+               
+            for(let i=0; i< maneuver.length; i++){
+
+                instructions = maneuver[i].instruction;
+                // console.log(instructions)
+                document.getElementById("panel").innerHTML+= ( i+1) + ') '+instructions +  `<br>`;
+
+            }
+
+            document.getElementById("panel").innerHTML+="Total distance : " + (summary.distance) + ' m' ;
+
+            document.getElementById("panel").innerHTML+="Estimated time : " + summary.travelTime.toMMSS();
+        }
+
+    </script>
+</html>
