@@ -44,5 +44,5 @@ DisplayRest()
 ```
 </br> Double-click on saved file to view on browser
 
-[![Foo](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/img/s3.png)](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/Step3.md) 
+[![Foo](img/s3.png)](Step3.md) 
 

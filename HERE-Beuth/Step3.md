@@ -16,4 +16,4 @@ drawCircle()
 </br> Double-click on saved file to view on browser
 
 
-[![Foo](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/img/s4.png)](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/Step4.md) 
+[![Foo](img/s4.png)](Step4.md) 

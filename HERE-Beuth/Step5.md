@@ -1,6 +1,6 @@
 
-#### [Final Result](https://kuberaspeaking.github.io/HERE-Beuth/)
-Check [final code](/index.html) with modifications
+#### [Final Result](https://kuberaspeaking.github.io/HERE-JS-workshop/HERE-Beuth/)
+Check [final code](index.html) with modifications
 
 # Contact Information
 [![Foo](https://www.gettingstamped.com/wp-content/uploads/2015/02/Twitter-Logo.png)](https://twitter.com/heredev) 

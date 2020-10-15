@@ -52,5 +52,5 @@ router.calculateIsoline(
 ```
 </br> Double-click on saved file to view on browser
 
-[![Foo](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/img/s5.png)](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/Step5.md) 
+[![Foo](img/s5.png)](Step5.md) 
 

@@ -59,6 +59,6 @@ map.addObject(posMarker)
 ```
 </br> Double-click on saved file to view on browser
 
-[![Foo](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/img/s2.png)](https://github.com/kuberaspeaking/HERE-Beuth/blob/master/Step2.md) 
+[![Foo](img/s2.png)](Step2.md) 
 
 
