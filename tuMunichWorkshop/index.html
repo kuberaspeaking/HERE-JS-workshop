@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Smart Cities</title>
+    <!-- SCRIPTS -->
+    <meta name="viewport" charset="UTF-8" content="initial-scale=1.0, width=device-width" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"/>
+  </head>
+  <body>
+    <div id="map" style="width: 100vw; height: 100vh; background: #39B6B3;" ></div> 
+    <script>
+      var platform = new H.service.Platform({
+        apikey: "aMEDq4JjjnxBcqf6S-g9OkREM8yElzKT2XU_gZhNic4"
+      });
+
+      // Obtain the default map types from the platform object:
+      var defaultLayers = platform.createDefaultLayers();
+      var myPos = {lat: 48.14885, lng: 11.56854};
+      // Instantiate (and display) a map object:
+      var map = new H.Map(
+        document.getElementById('map'),
+        defaultLayers.vector.normal.map,
+        {
+          zoom: 11,
+          center: myPos
+        });
+
+      var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+      var mapEvents = new H.mapevents.MapEvents(map);
+
+      var behavior = new H.mapevents.Behavior(mapEvents);
+
+        // create a marker object
+        posMarker = new H.map.Marker(myPos)
+        // Add the marker to the map 
+        map.addObject(posMarker)
+
+        function displayRestaurants(){
+        let params = {
+          "app_id": "Ilng5dKKaVBPRfk4Olj5",
+          "app_code": "W-DlT_lYkQq-mWDJMM-UCw",
+          "in":  myPos.lat + ',' + myPos.lng +";r=5000",       // meters
+          "cat": "restaurant,italian",
+          "size": "500"
+          };
+
+        let query = Object.keys(params)
+                  .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+                  .join('&')
+
+        let url = 'https://places.api.here.com/places/v1/discover/explore?' + query
+
+
+        fetch(url,{
+          "method": "GET"
+        })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response)
+          // create a marker object
+          for (i=0; i < response.results.items.length; i++)
+            {  
+            // resultData[i] = response.results.items[i]
+            newPos= ({lat: response.results.items[i].position[0], lng: response.results.items[i].position[1]});
+            addMarker(newPos)
+            // printInfo()
+            } 
+        })
+      }
+
+      function addMarker(newPos,html){
+        var pastaIcon = new H.map.Icon('pasta.png');  
+        var evMarker = new H.map.Marker(newPos,{ icon: pastaIcon });
+        map.addObject(evMarker);
+        };
+
+        displayRestaurants();
+        function drawCircle(){
+        var circle = new H.map.Circle(myPos,1000)
+        map.addObject(circle)
+        };
+
+    drawCircle();
+
+    var myLoc = myPos.lat + ',' + myPos.lng;
+      var routingParams = {
+        'mode': 'fastest;pedestrian;',
+        'start': myLoc,
+        'range': '1000', // 10 (10x60secs) minutes of driving 
+        'rangetype': 'distance'
+        };
+
+      // Define a callback function to process the isoline response.
+      var onResult = function(result){
+        var center = new H.geo.Point(
+          result.response.center.latitude,
+          result.response.center.longitude
+          );
+        var isolineCoords = result.response.isoline[0].component[0].shape;
+        var linestring = new H.geo.LineString();
+        var isolinePolygon;
+        var isolineCenter;
+
+        // Add the returned isoline coordinates to a linestring:
+        isolineCoords.forEach(function(coords) {
+          linestring.pushLatLngAlt.apply(linestring, coords.split(','))
+          });
+
+        // Create a polygon and a marker representing the isoline:
+        isolinePolygon = new H.map.Polygon(linestring);
+        //   isolineCenter = new H.map.Marker(center)
+
+        // Add the polygon and marker to the map:
+        map.addObject(isolinePolygon);
+
+        // Center and zoom the map so that the whole isoline polygon is
+        // in the viewport:
+        map.getViewModel().setLookAtData({bounds: isolinePolygon.getBoundingBox()});
+        };
+
+      // Get an instance of the routing service:
+      var router = platform.getRoutingService();
+
+      // Call the Routing API to calculate an isoline:
+      router.calculateIsoline(
+        routingParams,
+        onResult,
+        function(error){
+        alert(error.message)
+        }
+        );
+
+
+    </script>
+  </body>
+</html>
