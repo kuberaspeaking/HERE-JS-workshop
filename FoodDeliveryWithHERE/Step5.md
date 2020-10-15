@@ -1,7 +1,7 @@
 
-#### [Final Result](https://kuberaspeaking.github.io/FoodDeliveryWithHERE/)
+#### [Final Result](https://kuberaspeaking.github.io/HERE-JS-workshop/FoodDeliveryWithHERE/)
 
-Check [final code](/index.html) with modifications
+Check [final code](index.html) with modifications
 
 # Contact Information
 [![Foo](img/twitter.png)](https://twitter.com/heredev) 
