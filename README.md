@@ -6,7 +6,7 @@ This is a repository of old markdown style [HERE workshops](https://kuberaspeaki
    - Draw an isoline to see which of those can you reach within 20 minutes
    - [Final outcome](https://kuberaspeaking.github.io/HERE-JS-workshop/Smart_Cities_EV_Charging)
 ## [Cafe's near me -Beuth University](HERE-Beuth)
-## [EV-Charging-Isoline2](HERE-EV-Isoline)
+<!-- ## [EV-Charging-Isoline2](HERE-EV-Isoline) -->
 ## [Food Delivery Workshop](FoodDeliveryWithHERE)
 ## [TU Munich Workshop](https://kuberaspeaking.github.io/HERE-JS-workshop/tuMunichWorkshop)
 ## [TU Mainz Workshop](TU_Mainz)
