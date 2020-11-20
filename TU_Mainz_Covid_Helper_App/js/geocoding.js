@@ -12,7 +12,7 @@ async function findAddress(position){
             resolve(address)
         }, 
         function(error) {
-            alert(error.message)
+            reject(error.message)
         });
         // Service.geocoder(params, function (result){ resolve(address) });
         });
@@ -20,9 +20,9 @@ async function findAddress(position){
     // return address
 }
 
-async function showMyAddress(){
+function showMyAddress(){
     if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
+        navigator.geolocation.getCurrentPosition(async position => {
             // set maker position using the latitude and longitude in the received position
             myPosition = {lat:position.coords.latitude,lng:position.coords.longitude};
             //  create makrker element using the received position
