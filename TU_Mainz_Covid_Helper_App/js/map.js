@@ -24,14 +24,15 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 var markerGroup = new H.map.Group();
-map.addObject(markerGroup);
+let isolineGroups = new H.map.Group();
+map.addObjects([markerGroup,isolineGroups]);
 
 // add a HERE logo as a Marker Icon
-var hereIcon = new H.map.Icon('assets/HERE_Logo.png');
+var hereIcon = new H.map.Icon('assets/img/HERE_Logo.png');
 // add a marker Icon to show your position 
-var helperIcon = new H.map.Icon('assets/helper.png');
+var helperIcon = new H.map.Icon('assets/img/helper.png');
 // add a marker Icon to show help seeker's position 
-var seekerIcon = new H.map.Icon('assets/seeker.png');
+var seekerIcon = new H.map.Icon('assets/img/seeker.png');
 
 // add center and icon to Marker
 var hereMarker = new H.map.Marker(mapCenter,
@@ -40,6 +41,7 @@ var hereMarker = new H.map.Marker(mapCenter,
   });
 // add marker to map
 markerGroup.addObject(hereMarker);
+
 
 map.addEventListener('tap', function(evt) {
   if(evt.target instanceof H.map.Marker){
