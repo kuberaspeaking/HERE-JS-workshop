@@ -33,6 +33,8 @@ var hereIcon = new H.map.Icon('assets/img/HERE_Logo.png');
 var helperIcon = new H.map.Icon('assets/img/helper.png');
 // add a marker Icon to show help seeker's position 
 var seekerIcon = new H.map.Icon('assets/img/seeker.png');
+// add a marker Icon to show help seeker's position 
+var groceriesIcon = new H.map.Icon('assets/img/groceries.png');
 
 // add center and icon to Marker
 var hereMarker = new H.map.Marker(mapCenter,
@@ -42,14 +44,16 @@ var hereMarker = new H.map.Marker(mapCenter,
 // add marker to map
 markerGroup.addObject(hereMarker);
 
-
+// var info = new H.ui.InfoBubble();
 map.addEventListener('tap', function(evt) {
   if(evt.target instanceof H.map.Marker){
       var bubble =  new H.ui.InfoBubble(evt.target.getGeometry(), {
       // read custom data
       content: evt.target.getData()
       });
+      
       // show info bubble
       ui.addBubble(bubble);
-  }        
+  }  
 });
+
